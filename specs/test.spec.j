@@ -1,10 +1,7 @@
+const {
+    sendRequest
+ } = require ("../helpers/api.helper");
 const axios = require('axios');
-//const chai = require('chai');
-//const expect = chai.expect;
-//import axios from 'axios';
-//import { expect } from 'chai';
-
-
 describe('API Test', () => {
     it('GET test', async () => {
         
