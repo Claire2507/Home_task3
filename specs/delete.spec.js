@@ -22,18 +22,18 @@ describe('Deleting a Pet', () => {
       status: "available"
     };
 
-   
+      // create a new pet
       const createResponse = await axios.post('https://petstore.swagger.io/v2/pet', newPetData);
       expect(createResponse.status).to.equal(200);
-  
+      // verify the pet is created
       const getResponseBeforeDelete = await axios.get(`https://petstore.swagger.io/v2/pet/${newPetData.id}`);
       expect(getResponseBeforeDelete.status).to.equal(200);
     
-    
+      // delete the created pet
       const delResponse = await axios.delete(`https://petstore.swagger.io/v2/pet/${newPetData.id}`);
       expect(delResponse.status).to.equal(200);
   
-    
+    // verify pet is deleted
     try {
       await axios.get(`https://petstore.swagger.io/v2/pet/${newPetData.id}`);
       throw new Error('Pet was not deleted successfully');

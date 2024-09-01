@@ -2,6 +2,7 @@ const axios = require('axios');
 
 describe('Adding a new Pet', () => {
   it('should allow adding a new Pet', async () => {
+     // Define the new pet's data
     const newPetData = {
       id: 160,
       category: {
@@ -21,10 +22,11 @@ describe('Adding a new Pet', () => {
       status: "available"
     };
 
+    //  add the new pet
     const response = await axios.post('https://petstore.swagger.io/v2/pet', newPetData);
-
+    // Check that the response status is 200
     expect(response.status).to.equal(200);
-
+    // Verify that the response data matches the data we sent
     expect(response.data).to.have.property('name', newPetData.name);
     expect(response.data).to.have.property('status', newPetData.status);
     expect(response.data.category).to.have.property('name', newPetData.category.name);
